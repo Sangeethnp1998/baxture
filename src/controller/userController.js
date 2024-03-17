@@ -1,5 +1,7 @@
-const { users } = require("../db")
+const {getUsersArray } = require("../db")
 const { v4: uuidv4 } = require('uuid');
+
+let users = getUsersArray()
 
 function getUsers(req,res){
     try {
@@ -68,7 +70,6 @@ function editUser(req,res){
 
 function deleteUser(req,res){
     try {
-        
         const user = users.filter((data)=>{
            return  data.id == req.params.userId 
         })

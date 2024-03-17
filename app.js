@@ -3,8 +3,11 @@ const express = require('express');
 const cors = require('cors');
 
 const userRoute = require('./src/routes/userRoute')
-
 dotenv.config();
+
+// Set default environment to development if not explicitly set
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 const PORT = process.env.PORT
 const app = express();
 
@@ -19,7 +22,5 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/users',userRoute)
 
+module.exports = app;
 
-app.listen(PORT,()=>{
-    console.log("Connected to port - ",PORT)
-})
